@@ -1,0 +1,39 @@
+name: Deploy AAR to JitPack
+
+on:
+#  push:
+#    branches:
+#      - *
+#  pull_request:
+#    branches:
+#      - main
+#  release:
+#    types: [published]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build AAR Modules
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set Up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Grant execute permission to Gradle
+        run: chmod +x gradlew
+
+      - name: Build AAR Modules
+        run: ./gradlew clean assembleRelease
+
+      - name: Upload AAR Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-aars
+          path: '**/build/outputs/aar/*.aar'

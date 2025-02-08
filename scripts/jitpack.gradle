@@ -1,0 +1,24 @@
+// gradle/jitpack-publish.gradle
+
+apply plugin: 'maven-publish'
+
+afterEvaluate { project ->
+    if (project.plugins.hasPlugin('com.android.library')) {
+        publishing {
+            publications {
+                release(MavenPublication) {
+                    from components.release
+                    groupId = 'com.github.srtvprateek'
+                    artifactId = project.name
+                    version = '1.0.0'
+                }
+            }
+
+            repositories {
+                maven {
+                    url = uri("https://jitpack.io")
+                }
+            }
+        }
+    }
+}
