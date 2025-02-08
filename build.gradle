@@ -47,5 +47,22 @@ task prCheck {
     dependsOn ':pluto:validateChanges'
 }
 
+tasks.register("publishAllModulesToJitPack") {
+    group = "publishing"
+    description = "Publishes all AAR modules to JitPack"
+
+    def publishTasks = []
+    def modules = [":pluto:lib-no-op", ":pluto:lib"] // List only the modules that publish AARs
+
+    modules.each { module ->
+        def taskName = "${module}:publishReleasePublicationToMavenLocal"
+        if (tasks.findByPath(taskName) != null) {
+            publishTasks.add(taskName)
+        }
+    }
+
+    dependsOn publishTasks
+}
+
 apply from: "$rootDir/scripts/project-dependancy-graph.gradle"
 apply from: "$rootDir/maven-versions.gradle"
