@@ -1,5 +1,5 @@
 apply from: "$rootDir/scripts/version.gradle"
-apply from: "$rootDir/scripts/publish/publish.gradle"
+apply from: "$rootDir/scripts/jitpack.gradle"
 
 
 def version = loadVersioningData()
