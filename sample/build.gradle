@@ -75,24 +75,27 @@ android {
 }
 
 dependencies {
-    /* Local Op dependencies */
-    debugImplementation project(path: ':pluto:lib')
-    debugImplementation project(path: ':pluto-plugins:bundle:lib')
 
-    /* Maven Op dependencies */
-    debugMavenImplementation "com.plutolib:pluto:$verPublish"
-    debugMavenImplementation "com.plutolib.plugins:bundle-core:$verPublish"
-
-    /* Local NoOp dependencies */
-    debugNoOpImplementation project(path: ':pluto:lib-no-op')
-    debugNoOpImplementation project(path: ':pluto-plugins:bundle:lib-no-op')
-
-    /* Maven NoOp dependencies */
-    debugNoOpMavenImplementation "com.plutolib:pluto-no-op:$verPublish"
-    debugNoOpMavenImplementation "com.plutolib.plugins:bundle-core-no-op:$verPublish"
-
-    releaseImplementation "com.plutolib:pluto:$verPublish"
-    releaseImplementation "com.plutolib.plugins:bundle-core:$verPublish"
+    implementation project(path: ':pluto:lib')
+    implementation project(path: ':pluto-plugins:bundle:lib')
+//    /* Local Op dependencies */
+//    debugImplementation project(path: ':pluto:lib')
+//    debugImplementation project(path: ':pluto-plugins:bundle:lib')
+//
+//    /* Maven Op dependencies */
+//    debugMavenImplementation "com.plutolib:pluto:$verPublish"
+//    debugMavenImplementation "com.plutolib.plugins:bundle-core:$verPublish"
+//
+//    /* Local NoOp dependencies */
+//    debugNoOpImplementation project(path: ':pluto:lib-no-op')
+//    debugNoOpImplementation project(path: ':pluto-plugins:bundle:lib-no-op')
+//
+//    /* Maven NoOp dependencies */
+//    debugNoOpMavenImplementation "com.plutolib:pluto-no-op:$verPublish"
+//    debugNoOpMavenImplementation "com.plutolib.plugins:bundle-core-no-op:$verPublish"
+//
+//    releaseImplementation "com.plutolib:pluto:$verPublish"
+//    releaseImplementation "com.plutolib.plugins:bundle-core:$verPublish"
 
     /**
      * Other dependencies
